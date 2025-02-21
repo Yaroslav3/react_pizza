@@ -10,8 +10,22 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-navigation/native": "^7.0.14",
+    "@react-navigation/native-stack": "^7.2.0",
+    "@react-navigation/stack": "^7.1.1",
+    "@reduxjs/toolkit": "^2.5.1",
+    "assets": "^3.0.1",
     "react": "18.3.1",
-    "react-native": "0.77.1"
+    "react-native": "^0.77.1",
+    "react-native-gesture-handler": "^2.23.1",
+    "react-native-orientation-locker": "^1.7.0",
+    "react-native-paper": "^5.13.1",
+    "react-native-safe-area-context": "^5.2.0",
+    "react-native-screens": "^4.6.0",
+    "react-native-svg": "^15.11.1",
+    "react-native-svg-transformer": "^1.5.0",
+    "react-native-toast-message": "^2.2.1",
+    "react-redux": "^9.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

@@ -1,24 +1,27 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import HomeScreen from '../../src/components/HomeScreen';
-import CartScreen from '../../src/components/CartScreen';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen, {Pizza} from '../page/HomeScreen.tsx';
+import BaskedScreen from '../page/BasketScreen.tsx';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export type RootStackParamList = {
     Home: undefined;
-    Cart: undefined;
+    Basket: { cart: Pizza[] };
 };
 
-const Stack = createStackNavigator<RootStackParamList>();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function AppNavigator() {
     return (
-        <NavigationContainer>
-            <Stack.Navigator initialRouteName="Home">
-                <Stack.Screen name="Home" component={HomeScreen} />
-                <Stack.Screen name="Cart" component={CartScreen} />
-            </Stack.Navigator>
-        </NavigationContainer>
+        <SafeAreaProvider>
+            <NavigationContainer>
+                <Stack.Navigator initialRouteName="Home">
+                    <Stack.Screen name="Home" component={HomeScreen} />
+                    <Stack.Screen name="Basket" component={BaskedScreen} />
+                </Stack.Navigator>
+            </NavigationContainer>
+        </SafeAreaProvider>
     );
 }
 

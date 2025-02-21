@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+import cartReducer from '../store/storeActionPizza';
 
 export const store = configureStore({
     reducer: {
