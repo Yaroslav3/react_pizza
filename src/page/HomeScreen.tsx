@@ -7,7 +7,7 @@ import {
   StyleSheet,
   SafeAreaView,
   StatusBar,
-  useColorScheme,
+  useColorScheme, Image,
 } from 'react-native';
 import {CardItem} from '../components/CardItem';
 import {pizzaData} from '../data/static-service.tsx';
@@ -49,7 +49,10 @@ const HomeScreen: React.FC = () => {
           <Badge style={styles.badge}>{stateSelect.length}</Badge>
         </TouchableOpacity>
 
-        <Text style={styles.text}>Смачна піца</Text>
+        <View style={styles.hed} >
+          <Image style={styles.icon} source={require('../../free-icon.png')}></Image>
+          <Text style={styles.text}>Смачна піца</Text>
+        </View>
         <Text style={styles.textDes}>Обери свою смачну піцу!</Text>
       </View>
       <ScrollView style={styles.containerText}>
@@ -87,9 +90,18 @@ const styles = StyleSheet.create({
     top: 8,
   },
   basketBlIcon: {},
+  hed:{
+    flexDirection: 'row',
+  },
+  icon: {
+    width: 30,
+    height: 30,
+  },
   text: {
     fontSize: 24,
     fontWeight: '700',
+    paddingTop: 2,
+    paddingLeft: 10,
   },
   textDes: {
     marginTop: 15,

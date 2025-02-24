@@ -10,7 +10,9 @@ import ArrowLeftIcon from '../util/icon/ArrowLeftIcon.tsx';
 import ArrowRightIcon from '../util/icon/ArrowRightIcon.tsx';
 import {useDispatch, useSelector} from 'react-redux';
 import {increaseQuantity, decreaseQuantity, Pizza, clearCart} from '../store/storeActionPizza.tsx';
-import EmptyOrder from "../../assets/svg/order-empty";
+// @ts-ignore
+import EmptyOrder from '../../assets/svg/order-empty';
+import {Button} from 'react-native-paper';
 
 export interface DataPizzaList {
   pizza: Pizza;
@@ -52,7 +54,7 @@ const BasketScreen: React.FC = () => {
     );
   };
 
-  // Функція рендеру елементів
+
   const renderItem = ({item}: {item: DataPizzaList}) => (
       <View style={styles.itemContainer}>
         <View style={styles.infoOrder}>
@@ -88,8 +90,11 @@ const BasketScreen: React.FC = () => {
         {stateSelect.length > 0 ? (
             <>
               <View style={styles.btnOrder}>
-                <Text style={styles.btnOrderDelivery} onPress={() => orderCreate()}>Доставка</Text>
-                <Text style={styles.btnOrderWithYou} onPress={() => orderCreateWithYou()}> З собою</Text>
+                <Button style={styles.btnOrderDelivery} onPress={() => orderCreate()}>
+                  <Text style={styles.btn_text}>Доставка</Text></Button>
+                <Button style={styles.btnOrderWithYou} onPress={() => orderCreateWithYou()}>
+                  <Text style={styles.btn_text}>З собою</Text>
+                </Button>
               </View>
               <View style={styles.textInfo}>
                 <Text style={styles.textInfoP}>Ваше замовлення:</Text>
@@ -130,26 +135,22 @@ const styles = StyleSheet.create({
   btnOrderDelivery: {
     borderRadius: 10,
     width: '45%',
-    backgroundColor: 'rgba(37,37,37,0.1)',
-    borderWidth: 1,
-    borderColor: 'rgba(37,37,37,0.24)',
-    color: 'black',
-    textAlign: 'center',
-    paddingTop: 10,
-    height: 45,
-    fontSize: 18,
+    backgroundColor: 'rgba(152,151,151,0.04)',
+    height: 50,
+    paddingTop: 5,
   },
   btnOrderWithYou: {
     borderRadius: 10,
     width: '45%',
-    backgroundColor: 'rgb(255,207,92)',
-    borderWidth: 1,
+    backgroundColor: 'rgba(255,207,92,0.65)',
     borderColor: 'rgba(37,37,37,0.24)',
     color: 'black',
-    textAlign: 'center',
-    paddingTop: 10,
-    height: 45,
-    fontSize: 18,
+    height: 50,
+    paddingTop: 5,
+  },
+  btn_text: {
+    color: 'rgb(37,37,37)',
+    fontSize: 17,
   },
   textInfo: {
     padding: 20,

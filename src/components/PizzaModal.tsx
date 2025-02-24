@@ -12,6 +12,7 @@ import ArrowRightIcon from '../util/icon/ArrowRightIcon.tsx';
 import ArrowLeftIcon from '../util/icon/ArrowLeftIcon.tsx';
 import {RootState} from '../store/storeReducerPizza.tsx';
 import {useDispatch, useSelector} from 'react-redux';
+import { Button } from 'react-native-paper';
 import { addToCart, increaseQuantity, decreaseQuantity } from '../store/storeActionPizza.tsx';
 
 export const PizzaModal: React.FC<any> = ({pizza, visible, onClose}) => {
@@ -29,7 +30,8 @@ export const PizzaModal: React.FC<any> = ({pizza, visible, onClose}) => {
     if (!selectedPizza) {
       dispatch(addToCart({pizza, quantity}));
     }
-  }
+  };
+
   const handleIncreaseQuantity = () => {
     dispatch(increaseQuantity(pizza));
   };
@@ -57,7 +59,9 @@ export const PizzaModal: React.FC<any> = ({pizza, visible, onClose}) => {
                   <View style={styles.selectContainer}>
                     {!selectedPizza ? (<>
                       <View style={styles.btn_bl}>
-                        <Text style={styles.btn} onPress={handleOrder}>Замовити</Text></View>
+                        <Button mode="contained" style={styles.btn} onPress={handleOrder}>
+                          <Text style={styles.text}>Замовити</Text></Button>
+                      </View>
                     </>):(<>
                       <View style={styles.priceContainer}>
                         <TouchableOpacity style={styles.arrowButton} onPress={handleDecreaseQuantity}>
@@ -150,31 +154,34 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   btn_bl: {
-    paddingTop: 10,
+    paddingTop: 20,
   },
   btn: {
     borderRadius: 5,
-    width: 100,
+    width: 150,
     backgroundColor: '#ffcf5c',
     color: 'black',
     textAlign: 'center',
-    paddingTop: 5,
-    height: 30,
+    height: 40,
   },
+  text:{color: 'black', fontWeight: 400},
   priceContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     gap: 10,
-    marginTop: 10,
-    backgroundColor: 'rgba(85,85,85,0.22)',
+    width: 120,
+    height: 40,
+    marginTop: 20,
+    backgroundColor: 'rgba(85,85,85,0.13)',
     padding: 5,
     borderRadius: 10,
   },
   priceAll: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    marginTop: 10,
+    marginTop: 30,
+    marginRight: -20,
     gap: 10,
   },
   priceAll_text: {

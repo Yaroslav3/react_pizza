@@ -1,13 +1,13 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen, {Pizza} from '../page/HomeScreen.tsx';
+import HomeScreen from '../page/HomeScreen.tsx';
 import BaskedScreen from '../page/BasketScreen.tsx';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export type RootStackParamList = {
     Home: undefined;
-    Basket: { cart: Pizza[] };
+    Basket: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();

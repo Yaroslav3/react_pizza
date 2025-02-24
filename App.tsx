@@ -16,7 +16,7 @@ const App: React.FC = () => {
                 <NavigationContainer>
                     <Stack.Navigator initialRouteName="Home">
                         <Stack.Screen name="Home" options={{title: 'Обери свою піцу'}} component={HomeScreen} />
-                        <Stack.Screen name="Basket" options={{title: 'Корзина'}} component={BasketScreen} />
+                        <Stack.Screen name="Basket" options={{title: 'Ваші замовлення'}} component={BasketScreen} />
                     </Stack.Navigator>
                 </NavigationContainer>
             </SafeAreaProvider>
