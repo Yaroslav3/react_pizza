@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 
-const CartScreen = ({ route }) => {
+export const CartScreen: React.FC<any> = ({route}) => {
     const { cart } = route.params;
 
     return (
@@ -32,5 +32,3 @@ const styles = StyleSheet.create({
         marginVertical: 10,
     },
 });
-
-export default CartScreen;

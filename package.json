@@ -16,6 +16,7 @@
     "@reduxjs/toolkit": "^2.5.1",
     "assets": "^3.0.1",
     "react": "18.3.1",
+    "react-hook-form": "^7.54.2",
     "react-native": "^0.77.1",
     "react-native-gesture-handler": "^2.23.1",
     "react-native-orientation-locker": "^1.7.0",

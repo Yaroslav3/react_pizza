@@ -1,6 +1,7 @@
 import {Image, View, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import React from "react";
 
-export const CardItem = ({pizza, onPress}) => {
+export const CardItem: React.FC<any> = ({pizza, onPress}) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.btn}>
       <View style={styles.vl}>
