@@ -3,7 +3,7 @@ import {
     View,
     Text,
     StyleSheet,
-    FlatList, Image, TouchableOpacity, Alert, SafeAreaView, ScrollView,
+    FlatList, Image, TouchableOpacity,
 } from 'react-native';
 import {RootState} from '../store/storeReducerPizza.tsx';
 import ArrowLeftIcon from '../util/icon/ArrowLeftIcon.tsx';
@@ -40,9 +40,6 @@ const BasketScreen: React.FC = () => {
 
     const handleDecreaseQuantity = (item: DataPizzaList) => {
         dispatch(decreaseQuantity(item.pizza));
-    };
-    const handleClearCart = () => {
-        dispatch(clearCart());
     };
 
     const orderCreate = () => {

@@ -5,9 +5,8 @@ import AddressInput from './AddressInput';
 import {useNavigation} from "@react-navigation/native";
 import {StackNavigationProp} from "@react-navigation/stack";
 import {RootStackParamList} from "../navigation/AppNavigator.tsx";
-import {DataPizzaList, OrderEnum, TypeOrder} from "../page/BasketScreen.tsx";
-import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../store/storeReducerPizza.tsx";
+import {OrderEnum, TypeOrder} from "../page/BasketScreen.tsx";
+import {useDispatch} from "react-redux";
 import {clearCart} from "../store/storeActionPizza.tsx";
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
 

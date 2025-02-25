@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     inputError: {
-        borderColor: 'red', // Червоний бордер для індикації помилки
+        borderColor: 'red',
     },
     errorText: {
         color: 'red',
