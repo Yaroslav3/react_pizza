@@ -6,6 +6,7 @@
      npx react-native run-android
      npx react-native run-ios
 
-# cd android && ./gradlew clean && cd ..
-    ./gradlew assembleRelease
-    ./gradlew assembleDebug
+#  build app 
+     cd android && ./gradlew clean && cd ..
+     ./gradlew assembleRelease
+     ./gradlew assembleDebug
