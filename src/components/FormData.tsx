@@ -63,7 +63,7 @@ const FormData: React.FC<CoreModelsInterface.DataFiled> = ({ control, name, type
 
 const styles = StyleSheet.create({
     inputContainer: {
-        marginBottom: 10,
+        marginBottom: 18,
     },
     label: {
         fontSize: 16,
@@ -83,6 +83,9 @@ const styles = StyleSheet.create({
         color: 'red',
         fontSize: 12,
         marginTop: 5,
+        position: "absolute",
+        bottom: -16,
+        zIndex: 9999
     },
     textarea: {
         height: 100,

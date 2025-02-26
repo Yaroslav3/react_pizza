@@ -9,7 +9,7 @@ export const schemaFieldsDelivery = yup
         entrance: yup.string().required('Введіть під’їзд'),
         numberFleet: yup.string().required('Введіть номер квартири'),
         floor: yup.string().required('Введіть поверх'),
-        codeEnter: yup.number().positive().integer('Введіть код, числом'),
+        codeEnter: yup.number().positive().typeError('Введіть код, числом'),
     }).required()
 
 export const fieldsDelivery: Array<CoreModelsInterface.DataFiled> = [
@@ -24,7 +24,7 @@ export const fieldsDelivery: Array<CoreModelsInterface.DataFiled> = [
 
 export const schemaFieldWithYou = yup
     .object({
-        streetShop: yup.string().required('Напишіть вулицю піцерії'),
+        streetShop: yup.string().required('Оберіть ресторан!'),
     }).required()
 
 export const fieldOrderWithYou: Array<CoreModelsInterface.DataFiled> = [
