@@ -1,108 +1,102 @@
-import React, {useEffect} from 'react';
-import {View, FlatList, TouchableOpacity, Text, StyleSheet, Alert} from 'react-native';
-import {SubmitHandler, useForm} from 'react-hook-form';
-import AddressInput from './AddressInput';
-import {useNavigation} from "@react-navigation/native";
-import {StackNavigationProp} from "@react-navigation/stack";
-import {RootStackParamList} from "../navigation/AppNavigator.tsx";
-import {OrderEnum, TypeOrder} from "../page/BasketScreen.tsx";
-import {useDispatch} from "react-redux";
-import {clearCart} from "../store/storeActionPizza.tsx";
-import {InputModeOptions} from "react-native/Libraries/Components/TextInput/TextInput";
+import React, { useEffect } from 'react';
+import { View, FlatList, TouchableOpacity, Text, StyleSheet, Alert } from 'react-native';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import FormData from './FormData.tsx';
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../navigation/AppNavigator.tsx";
+import { OrderEnum, TypeOrder } from "../page/BasketScreen.tsx";
+import { useDispatch } from "react-redux";
+import { clearCart } from "../store/storeActionPizza.tsx";
+import { CoreModelsInterface } from "../interface/core-models-interface.tsx";
+import {
+    fieldOrderWithYou,
+    fieldsDelivery,
+    schemaFieldsDelivery,
+    schemaFieldWithYou
+} from "../util/form-data/formData.tsx";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
-export interface InputData {
-    name: keyof IFormOrder,
-    type: InputModeOptions,
-    label: string,
-    placeholder: string
-    required: boolean,
-    pattern?: {
-        value: RegExp,
-        message: string
-    };
-}
-export interface IFormOrder {
-    city: string,
-    street: string,
-    buildingNumber: string,
-    entrance: string,
-    numberFleet: string,
-    floor: string,
-    codeEnter: string,
-    streetShop: string,
-
-}
-
-const FormScreen = ({type}: {type: TypeOrder}) => {
+const FormScreen = ({ type }: { type: TypeOrder }) => {
     const navigation = useNavigation<HomeScreenNavigationProp>();
     const dispatch = useDispatch();
-    const {control, handleSubmit, reset} = useForm<IFormOrder>({
+
+    const { control: controlDelivery, handleSubmit: handleSubmitDelivery, reset: resetDelivery } = useForm<CoreModelsInterface.IFormOrder>({
         defaultValues: {
             city: 'Київ'
-        }
-    })
+        },
+        resolver: yupResolver<any>(schemaFieldsDelivery),
+    });
+
+    const { control: controlWithYou, handleSubmit: handleSubmitWithYou, reset: resetWithYou } = useForm<CoreModelsInterface.IFormOrderWithYou>({
+        defaultValues: {
+            streetShop: '',
+        },
+        resolver: yupResolver<any>(schemaFieldWithYou),
+    });
 
     useEffect(() => {
-        reset({
-            city: 'Київ',
-        });
-    }, [type, reset])
-
-    const fieldsWithOut: Array<InputData> = [
-        { name: 'city', type: 'text', label: 'Місто', placeholder: 'Введіть місто', required: true},
-        { name: 'street', type: 'text', label: 'Вулиця', placeholder: 'Введіть вулицю' ,required: true, },
-        { name: 'buildingNumber', type: 'text', label: 'Номер дому', placeholder: 'Введіть номер дому', required: true },
-        { name: 'entrance', type: 'text', label: 'Під’їзд', placeholder: 'Введіть під’їзд', required: true },
-        { name: 'numberFleet', type: 'text', label: 'Номер квартири', placeholder: 'Введіть номер квартири', required: true },
-        { name: 'floor', type: 'text', label: 'Поверх', placeholder: 'Введіть поверх', required: true },
-        { name: 'codeEnter',  type: 'text',label: 'Код домофону', placeholder: 'Введіть код', required: false},
-    ];
-    const field: Array<InputData> = [
-        {name: 'streetShop', type: 'text', label: 'Вулиця піцерії', placeholder: 'Введіть вулицю', required: true},
-    ];
+        if (type.type === OrderEnum.ORDER) {
+            resetDelivery({ city: 'Київ' });
+        } else {
+            resetWithYou({ streetShop: '' });
+        }
+    }, [type, resetDelivery, resetWithYou]);
 
     const handleClearCart = () => {
         dispatch(clearCart());
     };
 
-    const renderItem =({item}: { item: InputData }) => (
-        <AddressInput control={control} name={item.name} type={item.type} label={item.label}
-                      placeholder={item.placeholder}  required={item.required} pattern={item.pattern} />
+    const renderItemDelivery = ({ item }: { item: CoreModelsInterface.DataFiled }) => (
+        <FormData control={controlDelivery} name={item.name} type={item.type} label={item.label}
+                  placeholder={item.placeholder} pattern={item.pattern} optionsSelect={item.optionsSelect} />
     );
-    const orderInfo: SubmitHandler<IFormOrder> = (data) => {
-        const text = type.type === OrderEnum.ORDER_WITH_YOU ? 'Дякую Ви замовили піцу з доставкою!': 'Дякую Ви замовили піцу з самовмвозом!'
+
+    const renderItemWithYou = ({ item }: { item: CoreModelsInterface.DataFiled }) => (
+        <FormData control={controlWithYou} name={item.name} type={item.type} label={item.label}
+                  placeholder={item.placeholder} pattern={item.pattern} optionsSelect={item.optionsSelect} />
+    );
+
+    const orderInfo: SubmitHandler<CoreModelsInterface.IFormOrder | CoreModelsInterface.IFormOrderWithYou> = (data) => {
+        console.log('ddd', data);
+        const text = type.type === OrderEnum.ORDER_WITH_YOU
+            ? 'Дякую Ви замовили піцу з доставкою!'
+            : 'Дякую Ви замовили піцу з самовивозом!';
+
         Alert.alert(
             'Замовлення підтверджено',
             text,
             [
-              {text: 'ОК', onPress: handleClearCart},
+                { text: 'ОК', onPress: handleClearCart },
             ],
         );
-    }
+    };
 
     return (
         <View style={styles.container}>
             <Text style={styles.header}>Адреса доставки</Text>
             {type.type === 'ORDER' ? (
                 <FlatList
-                    data={fieldsWithOut}
-                    renderItem={renderItem}
+                    data={fieldsDelivery}
+                    renderItem={renderItemDelivery}
                     keyExtractor={(item) => item.name}
                     contentContainerStyle={{ gap: 10 }}
-
                 />
             ) : (
                 <FlatList
-                    data={field}
-                    renderItem={renderItem}
+                    data={fieldOrderWithYou}
+                    renderItem={renderItemWithYou}
                     keyExtractor={(item) => item.name}
                     contentContainerStyle={{ gap: 10 }}
-
                 />
             )}
 
-            <TouchableOpacity style={styles.button} onPress={handleSubmit((data) => orderInfo(data))}>
+            <TouchableOpacity
+                style={styles.button}
+                onPress={type.type === 'ORDER' ? handleSubmitDelivery(orderInfo) : handleSubmitWithYou(orderInfo)}
+            >
                 <Text style={styles.buttonText}>Оформити замовлення</Text>
             </TouchableOpacity>
 
