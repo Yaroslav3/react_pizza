@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
         marginTop: 5,
         position: "absolute",
         bottom: -16,
-        zIndex: 9999
+        zIndex: 100
     },
     textarea: {
         height: 100,
@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.1,
         shadowOffset: { width: 0, height: 2 },
         shadowRadius: 4,
+        zIndex: 9999
     },
     dropDownContainer: {
         backgroundColor: '#f9f9f9',
