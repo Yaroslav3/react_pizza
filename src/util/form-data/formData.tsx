@@ -1,5 +1,6 @@
 import {CoreModelsInterface} from "../../interface/core-models-interface.tsx";
 import * as yup from "yup"
+import {InferType} from "yup";
 
 export const schemaFieldsDelivery = yup
     .object({
@@ -35,3 +36,5 @@ export const fieldOrderWithYou: Array<CoreModelsInterface.DataFiled> = [
             {label: 'Руштавелі 45/4-а', value: 'Смачна піца 3'},
         ]},
 ];
+type delivery = InferType<typeof schemaFieldsDelivery>;
+type withYou = InferType<typeof schemaFieldWithYou>;

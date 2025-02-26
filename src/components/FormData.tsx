@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
         fontSize: 12,
         marginTop: 5,
         position: "absolute",
-        bottom: -16,
+        bottom: -20,
         zIndex: 100
     },
     textarea: {
