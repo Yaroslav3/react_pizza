@@ -7,6 +7,6 @@
      npx react-native run-ios
 
 #  build app 
-     cd android && ./gradlew clean && cd ..
-     ./gradlew assembleRelease
-     ./gradlew assembleDebug
+     cd android && ./gradlew clean && cd ..    - Очисть кеш (якщо були попередні збірки)
+     cd android && ./gradlew assembleRelease   - Збілдити APK (релізна версія)
+     cd android && ./gradlew assembleDebug     - Збілдити APK (відлагоджувальна версія)
