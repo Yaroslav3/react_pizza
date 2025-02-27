@@ -111,6 +111,7 @@ const styles = StyleSheet.create({
         borderTopWidth: 1,
         borderRadius: 8,
         marginTop: 5,
+        zIndex: 9999
     },
     textStyle: {
         fontSize: 14,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {} from 'react';
 import {
   Modal,
   View,
@@ -15,9 +15,11 @@ import {useDispatch, useSelector} from 'react-redux';
 import { Button } from 'react-native-paper';
 import { addToCart, increaseQuantity, decreaseQuantity } from '../store/storeActionPizza.tsx';
 
+
 export const PizzaModal: React.FC<any> = ({pizza, visible, onClose}) => {
   const dispatch = useDispatch();
   const stateSelect = useSelector((state: RootState) => state.cart.cart);
+
 
   if (!pizza) {
     return null;

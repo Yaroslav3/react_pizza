@@ -34,6 +34,9 @@ export const fieldOrderWithYou: Array<CoreModelsInterface.DataFiled> = [
             {label: 'Здановської 14/5', value: 'Смачна піца 1'},
             {label: 'Ахматової 6-а', value: 'Смачна піца 2'},
             {label: 'Руштавелі 45/4-а', value: 'Смачна піца 3'},
+            {label: 'Грушевського 4', value: 'Смачна піца 4'},
+            {label: 'Юлії Здановської 86/Б', value: 'Смачна піца 5'},
+            {label: 'Кримська 45-а', value: 'Смачна піца 6'},
         ]},
 ];
 type delivery = InferType<typeof schemaFieldsDelivery>;

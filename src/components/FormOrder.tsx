@@ -79,6 +79,7 @@ const FormScreen = ({ type }: { type: TypeOrder }) => {
             <Text style={styles.header}>Адреса доставки</Text>
             {type.type === 'ORDER' ? (
                 <FlatList
+                    style={styles.flatList}
                     data={fieldsDelivery}
                     renderItem={renderItemDelivery}
                     keyExtractor={(item) => item.name}
@@ -86,6 +87,7 @@ const FormScreen = ({ type }: { type: TypeOrder }) => {
                 />
             ) : (
                 <FlatList
+                    style={styles.flatList}
                     data={fieldOrderWithYou}
                     renderItem={renderItemWithYou}
                     keyExtractor={(item) => item.name}
@@ -117,6 +119,9 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         marginBottom: 15,
+    },
+    flatList: {
+        zIndex: 9999
     },
     button: {
         backgroundColor: '#ee3210',
