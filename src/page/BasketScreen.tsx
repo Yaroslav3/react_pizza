@@ -13,6 +13,9 @@ import {increaseQuantity, decreaseQuantity, Pizza, clearCart} from '../store/sto
 // @ts-ignore
 import EmptyOrder from '../../assets/svg/order-empty';
 import FormOrder from "../components/FormOrder.tsx";
+import {DirectionSwipeEnum} from "../enums/direction-swipe.enum.tsx";
+import {useNavigation} from "@react-navigation/native";
+import {HomeScreenNavigationProp} from "../../App.tsx";
 
 export interface DataPizzaList {
     pizza: Pizza;
@@ -48,7 +51,6 @@ const BasketScreen: React.FC = () => {
     const orderCreateWithYou = () => {
         setFormOrder({type: OrderEnum.ORDER_WITH_YOU, isShow: true})
     };
-
 
     const renderItem = ({item}: { item: DataPizzaList }) => (
         <View style={styles.itemContainer}>
@@ -87,6 +89,8 @@ const BasketScreen: React.FC = () => {
         <View style={{flex: 1, backgroundColor: 'white'}}>
             {stateSelect.length > 0 ? (
                 <FlatList
+                    keyboardShouldPersistTaps="handled"
+                    nestedScrollEnabled={true}
                     data={stateSelect}
                     renderItem={renderItem}
                     keyExtractor={(item) => item.pizza.id.toString()}
