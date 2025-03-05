@@ -16,6 +16,8 @@ end
 
 target 'AwesomeProject' do
   config = use_native_modules!
+  use_modular_headers!
+  use_frameworks!
 
   use_react_native!(
     :path => config[:reactNativePath],

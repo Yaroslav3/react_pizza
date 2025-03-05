@@ -18,7 +18,7 @@ import { addToCart, increaseQuantity, decreaseQuantity } from '../store/storeAct
 
 export const PizzaModal: React.FC<any> = ({pizza, visible, onClose}) => {
   const dispatch = useDispatch();
-  const stateSelect = useSelector((state: RootState) => state.cart.cart);
+  const stateSelect = useSelector((state: RootState) => state.cart.orderData);
 
 
   if (!pizza) {

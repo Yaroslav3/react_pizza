@@ -29,7 +29,7 @@ const HomeScreen: React.FC = () => {
     const heightPhone = Dimensions.get('window').height
     const navigation = useNavigation<HomeScreenNavigationProp>();
     const isDarkMode = useColorScheme() === 'dark';
-    const stateSelect = useSelector((state: RootState) => state.cart.cart);
+    const stateSelect = useSelector((state: RootState) => state.cart.orderData);
     const [selectedPizza, setSelectedPizza] = useState<Pizza | null>(null);
 
     const backgroundStyle = {
@@ -99,13 +99,13 @@ const HomeScreen: React.FC = () => {
 
                     <StatusBar barStyle={'dark-content'} backgroundColor={backgroundStyle.backgroundColor}/>
 
-                    <View style={styles.containerHead}>
+                    <TouchableOpacity style={styles.containerHead} onPress={() => navigation.navigate('Settings')}>
                         <View style={styles.hed}>
                             <Image style={styles.icon} source={require('../../free-icon.png')}></Image>
                             <Text style={styles.text}>Смачна піца</Text>
                         </View>
                         <Text style={styles.textDes}>Обери свою смачну піцу!</Text>
-                    </View>
+                    </TouchableOpacity>
 
                     <ScrollView style={[styles.containerText, {flexGrow: 1}]}
                                 keyboardShouldPersistTaps="handled"

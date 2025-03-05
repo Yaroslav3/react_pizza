@@ -13,9 +13,6 @@ import {increaseQuantity, decreaseQuantity, Pizza, clearCart} from '../store/sto
 // @ts-ignore
 import EmptyOrder from '../../assets/svg/order-empty';
 import FormOrder from "../components/FormOrder.tsx";
-import {DirectionSwipeEnum} from "../enums/direction-swipe.enum.tsx";
-import {useNavigation} from "@react-navigation/native";
-import {HomeScreenNavigationProp} from "../../App.tsx";
 
 export interface DataPizzaList {
     pizza: Pizza;
@@ -31,7 +28,7 @@ export enum OrderEnum {
 
 const BasketScreen: React.FC = () => {
     const dispatch = useDispatch();
-    const stateSelect: Array<DataPizzaList> = useSelector((state: RootState) => state.cart.cart);
+    const stateSelect: Array<DataPizzaList> = useSelector((state: RootState) => state.cart.orderData);
     const totalPrice = stateSelect.reduce((sum, item) => sum + item.pizza.price * item.quantity, 0);
     const [formOrder, setFormOrder] = useState<TypeOrder>({
         type: OrderEnum.ORDER,

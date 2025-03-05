@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "871615673085",
+    "project_id": "workplaces-12",
+    "storage_bucket": "workplaces-12.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:871615673085:android:3effbccfd6fba4a1924494",
+        "android_client_info": {
+          "package_name": "com.awesomeproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCY3i_qKZ43PnPI1hSULurK5oNJ0hJ6Qw8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
