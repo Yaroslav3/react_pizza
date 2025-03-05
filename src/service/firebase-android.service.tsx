@@ -46,12 +46,11 @@ export const firebaseAndroidService = async () => {
 };
 
 
-// Processing messages in the background
 messaging().setBackgroundMessageHandler(async remoteMessage => {
     console.log('Message received in background:', remoteMessage);
 
     PushNotification.localNotification({
-        channelId: "default-channel-id",
+        channelId: "default-channel-123",
         title: remoteMessage.notification?.title || "message",
         message: remoteMessage.notification?.body || "text",
         bigPictureUrl: remoteMessage.notification?.image || "",
@@ -62,13 +61,13 @@ messaging().setBackgroundMessageHandler(async remoteMessage => {
     });
 });
 
-// Обробка push-повідомлень у foreground режимі
+
 export const setupForegroundNotifications = () => {
     messaging().onMessage(async remoteMessage => {
         console.log("Foreground message received:", remoteMessage);
 
         PushNotification.localNotification({
-            channelId: "default-channel-123", // Використовуємо правильний канал
+            channelId: "default-channel-123",
             title: remoteMessage.notification?.title || "Нове повідомлення",
             message: remoteMessage.notification?.body || "Текст повідомлення",
             bigPictureUrl: remoteMessage.notification?.image || "",
